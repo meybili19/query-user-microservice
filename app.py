@@ -1,10 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 from models import db
-from routes import query_user
+from routes import get_all_users
 
 # Create the application
 app = Flask(__name__)
+
+CORS(app)
 
 # Application configuration
 app.config.from_object(Config)
@@ -13,9 +16,9 @@ app.config.from_object(Config)
 db.init_app(app)
 
 # Register the route to query user
-@app.route('/users/<int:id>', methods=['GET'])
-def query_user_route(id):
-    return query_user(id)
+@app.route('/users', methods=['GET'])
+def get_users():
+    return get_all_users()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)
