@@ -13,10 +13,11 @@ def get_all_users():
         return jsonify([
             {
                 'id': user.id,
+                'identification': user.identification,
                 'name': user.name,
                 'email': user.email,
-                'password': user.password,
-                'created_in': user.created_in
+                'type': user.type,
+                'created_at': user.created_at
             } for user in users
         ]), 200
     except Exception as e:
@@ -31,10 +32,11 @@ def query_user(id):
 
         return jsonify({
             'id': user.id,
+            'identification': user.identification,
             'name': user.name,
             'email': user.email,
-            'password': user.password,
-            'created_in': user.created_in
+            'type': user.type,
+            'created_at': user.created_at
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 400
