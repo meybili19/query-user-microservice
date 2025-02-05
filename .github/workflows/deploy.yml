@@ -53,6 +53,6 @@ jobs:
               --env DB_SERVER=${{ secrets.DB_SERVER_M }} \
               --env DB_NAME=${{ secrets.DB_NAME_M }} \
               -p 5002:5002 \
-              ${{ secrets.DOCKER_USERNAME }}/query_user_microservice_container:latest
+              ${{ secrets.DOCKER_USERNAME }}/query_user_microservice_image:latest
 
             echo "✅ Despliegue completado con éxito."
