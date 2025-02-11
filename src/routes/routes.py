@@ -18,3 +18,21 @@ def query_user(id):
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+    
+def get_all_users():
+    try:
+        users = User.query.all()
+        user_list = [
+            {
+                'id': user.id,
+                'identification': user.identification,
+                'name': user.name,
+                'email': user.email,
+                'type': user.type,
+                'created_at': user.created_at
+            }
+            for user in users
+        ]
+        return jsonify(user_list), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
